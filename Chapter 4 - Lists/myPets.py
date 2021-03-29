@@ -8,6 +8,7 @@ if name not in myPets:
 else:
     print('{} is my pet.'.format(name))
 
+# test lol
 # Enuerate practice
 supplies = ['pen','stapler','flamethrower','binders']
 for i,item in enumerate(supplies):
