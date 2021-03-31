@@ -37,3 +37,16 @@ print('Four score and seven ' + \
 
 
 # %%
+# Mutable and Immutable Data Types
+name = 'Zophie a cat'
+newName = name[:7] + 'the' + name[8:]
+print(newName)
+
+
+
+
+
+
+
+
+# %%
