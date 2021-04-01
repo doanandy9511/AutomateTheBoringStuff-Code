@@ -40,13 +40,36 @@ print('Four score and seven ' + \
 # Mutable and Immutable Data Types
 name = 'Zophie a cat'
 newName = name[:7] + 'the' + name[8:]
-print(newName)
+newName
+# %% Overwriting/replacing, not modifying
+eggs = [1,2,3]
+eggs = [4,5,6]
+eggs
+# %% Modifying List
+eggs = [1,2,3]
+del eggs[2]
+del eggs[1]
+del eggs[0]
+eggs.append(4)
+eggs.append(5)
+eggs.append(6)
+eggs
 
-
-
-
-
-
-
+# %% Tuple Data Type
+# 2 differences b/w Tuple and List
+#   1. Tuples are declared with ( )
+eggs = ('hello', 42, 0.5)
+print(eggs[0])
+print(eggs[1:3])
+print(len(eggs))
+# %% cont.
+#   2. Tuples are immutable
+eggs = ('hello', 42, 0.5)
+eggs[1] = 99
 
 # %%
+type(('hello',))
+# %%
+type(('hello'))
+# Advantages of Tuples:
+#   1. convey data that will n
