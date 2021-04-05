@@ -67,9 +67,84 @@ print(len(eggs))
 eggs = ('hello', 42, 0.5)
 eggs[1] = 99
 
-# %%
+# %% placing a trailing comma after the
+# value inside the parentheses indicates
+# the only one value in the tuple
 type(('hello',))
 # %%
 type(('hello'))
 # Advantages of Tuples:
-#   1. convey data that will n
+#   1. convey ordered sequence of values
+#       that never change
+#   2. b/c they are immutable and their
+#       contents don't change, Python
+#       can implement some optimizations
+
+# %% list() and tuple() casting fn's
+tuple(['cat', 'dog', 5])
+# %%
+list(('cat', 'dog', 5))
+# %%
+list('hello')
+
+# %% References (integers are immutable)
+spam = 42
+cheese = spam
+spam = 100
+spam # 100
+cheese # 42
+
+# %% Lists are mutable
+spam = [0, 1, 2, 3, 4, 5]
+cheese = spam # reference is being copied, not the list
+cheese[1] = 'Hello!'
+spam   # [0, 'Hello!', 2, 3, 4, 5]
+# the cheese variable refers to the same list
+cheese # [0, 'Hello!', 2, 3, 4, 5]
+
+# Variables contain references to values!!!
+
+# %% Identity and the id() fn
+bacon = 'Hello'
+print(id(bacon)) # 1611495592880
+bacon += ' world!' # A new string is made from 'Hello' and ' world!'
+print(id(bacon)) # 1611495593968
+
+# %% append() and modifying lists (mutable)
+eggs = ['cat', 'dog']
+print(id(eggs)) # 1611495516352
+eggs.append('moose') # append modifies the list "in place"
+print(id(eggs)) # 1611495516352
+eggs = ['bat', 'rat', 'cow'] # creates a new list -> new id
+print(id(eggs)) # 1611494734400
+
+# append(), extend(), remove(), sort(), reverse()
+#  and other list methods modify their lists in place
+# Python's automatic garbage collector deletes and values
+#  not being referred to by any variables to free up memory
+
+# %% Passing References
+# go to passingReference.py
+# affects both list and dictionaries
+
+# %% copy Module's copy() and deepcopy() fn's
+import copy
+spam = ['A', 'B', 'C', 'D']
+print(id(spam))
+# 1611495516352
+cheese = copy.copy(spam)
+print(id(cheese))
+# 1611494459584
+cheese[1] = 42
+print(spam)
+# ['A', 'B', 'C', 'D']
+print(cheese)
+# ['A', 42, 'C', 'D']
+
+# If the list you need to copy contains lists,
+#  then use the copy.deepcopy() fn instead
+# deepcopy() fn will copy inner lists as well
+
+
+
+# %%
