@@ -85,3 +85,35 @@ spam.isupper()
 'HELLO'.lower().islower()
 # True
 # %% the isX() methods
+# isalpha() returns True if the string consists only
+#  of letters and isn't blank
+# isalnum() returns True if the string consists only
+#  of letters and numbers and is not blank
+# isdecimal() returns True if the string consists only
+#  of numeric characters and is not blank
+# isspace() returns True if the string consists only
+#  of spaces, tabs, and newlines and is not blank
+# istitle() returns True if the string consists only
+#  of words that begin with an uppercase letter
+#  followed by only lowercase letters
+'hello'.isalpha()
+# True
+'hello123'.isalpha()
+# False
+'hello123'.isalnum()
+# True
+'hello'.isalnum()
+# True
+'123'.isdecimal()
+# True
+'  '.isspace()
+# True
+'This Is Title Case'.istitle()
+# True
+'This Is Title Case 123'.istitle()
+# True
+'This Is not Title Case'.istitle()
+# False
+'This Is NOT Title Case Either'.istitle()
+# False
+# %% validateInput.py
