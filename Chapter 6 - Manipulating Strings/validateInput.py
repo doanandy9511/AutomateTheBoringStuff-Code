@@ -7,7 +7,10 @@ def main():
         print('Please enter a number for your age.')
     
     while True:
-        pass
+        password = input('Select a new password (letters and numbers only):\n')
+        if password.isalnum():
+            break
+        print('Passwords can only have letters and numbers.')
 
 if __name__ == '__main__':
     main()

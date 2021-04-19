@@ -117,3 +117,51 @@ spam.isupper()
 'This Is NOT Title Case Either'.istitle()
 # False
 # %% validateInput.py
+# %% startswith() and endswith() methods
+'Hello, world!'.startswith('Hello')
+# True
+'Hello, world!'.endswith('world!')
+# True
+'abc123'.startswith('abcdef')
+# False
+'abc123'.endswith('12')
+# False
+'Hello, world!'.startswith('Hello, world!')
+# True
+'Hello, world!'.endswith('Hello, world!')
+# True
+
+# %% join() and split() methods
+', '.join(['cats', 'rats', 'bats'])
+# 'cats, rats, bats'
+' '.join(['My', 'name', 'is', 'Simon'])
+# 'My name is Simon'
+'ABC'.join(['My', 'name', 'is', 'Simon'])
+# 'MyABCnameABCisABCSimon'
+'My name is Simon'.split()
+# ['My', 'name', 'is', 'Simon']
+'MyABCnameABCisABCSimon'.split('ABC')
+# ['My', 'name', 'is', 'Simon']
+'My name is Simon'.split('m')
+# ['My na', 'e is Si', 'on']
+# %% A common use of split() is to splut a multiline
+#  string along the newline characters
+spam = '''Dear Alice,
+How have you been? I am fine.
+There is a container in the fridge
+that is labeled "Milk Experiment."
+
+Please do not drink it.
+Sincerely,
+Bob'''
+spam.split('\n')
+# ['Dear Alice,',
+# 'How have you been? I am fine.',
+# 'There is a container in the fridge',
+# 'that is labeled "Milk Experiment."',
+# '',
+# 'Please do not drink it.',
+# 'Sincerely,',
+# 'Bob']
+
+# %%
