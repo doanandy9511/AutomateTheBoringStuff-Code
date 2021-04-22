@@ -164,4 +164,97 @@ spam.split('\n')
 # 'Sincerely,',
 # 'Bob']
 
+# %% Splitting Strings with partition() method
+# returns a tuple of three substrings
+# "before", "separator", "after" substrings
+'Hello, world!'.partition('w')
+# ('Hello, ', 'w', 'orld!')
 # %%
+'Hello, world!'.partition('world')
+# ('Hello, ', 'world', '!')
+# %% if the separator occurs multiple times,
+# the method splits the string only on the first occurrence
+'Hello, world!'.partition('o')
+# ('Hell', 'o', ', world!')
+# %% if the separator can't be found, the first string returned
+# will be the entire string, and the other two will be empty
+'Hello, world!'.partition('XYZ')
+# ('Hello, world!', '', '')
+# %% you can use the multiple assignment trick to assign
+# the three returned strings to three variables
+before, sep, after = 'Hello, world!'.partition(' ')
+print(before) # 'Hello,'
+print(after)  # 'world!'
+
+# %% Justifying  text with the rjust(), ljust(), and center() methods
+'Hello'.rjust(10)
+# '     Hello'
+'Hello'.rjust(20)
+# '               Hello'
+'Hello, World!'.rjust(20)
+# '       Hello, World!'
+'Hello'.ljust(10)
+# 'Hello     '
+# %% an optional argument to rjust() and ljust() will specify
+# a fill character other than a space character
+'Hello'.rjust(20, '*')
+# '***************Hello'
+'Hello'.ljust(20, '-')
+# 'Hello---------------'
+'Hello'.center(20)
+# '       Hello        '
+'Hello'.center(20, '=')
+# '=======Hello========'
+# %% picnicTable.py
+
+# %% Removing whitespace with strip(), rstrip(), and lstrip() methods
+spam = '    Hello, World   '
+spam.strip()
+# 'Hello, World'
+spam.lstrip()
+# 'Hello, World   '
+spam.rstrip()
+# '    Hello, World'
+# %%
+spam = 'SpamSpamBaconSpamEggsSpamSpam'
+spam.strip('ampS')
+# passing strip() the argument 'ampS' will tell it to strip occurrences
+#  of a, m, p, and capital S from the ends of the string stored in spam
+# Note: the order of the characters in the string passed does not matter
+#  strip('ampS') = strip('mapS') = strip('Spam')
+# %% Numeric values of characters with the ord() and chr() fns
+ord('A')
+# 65
+ord('4')
+# 52
+ord('!')
+# 33
+chr(65)
+# 'A'
+# %% these fns are useful when you need to do an
+# ordering or mathematical operation on characters
+ord('B')
+# 66
+ord('A') < ord('B')
+# True
+chr(ord('A'))
+# 'A'
+chr(ord('A') + 1)
+# 'B'
+
+# %% Copying and pasting strings w/ the pyperclip module
+import pyperclip
+pyperclip.copy('Hello, world!!')
+pyperclip.paste()
+# 'Hello, world!!'
+# %% Project: Multi-Clipboard Automatic Messages
+# ProjectMclip.py
+
+# %% Project: Adding Bullets to Wiki Markup
+# ProjectBulletPointAdder.py
+
+# %% Short program: Pig Latin
+# pigLat.py
+
+# Practice Projects
+# Table Printer: tablePrinter.py
