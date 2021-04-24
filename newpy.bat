@@ -1,0 +1,1 @@
+@py.exe "C:\Users\Ando\Documents\GitHub\AutomateTheBoringStuff-Code\newpy.py"
