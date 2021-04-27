@@ -408,3 +408,106 @@ someRegexValue = re.compile(r'foo', re.IGNORECASE | re.DOTALL | re.VERBOSE)
 
 # %% Project: Phone # and Email Address Extractor
 # phoneAndEmail.py
+
+# %% Practice Question
+'''
+20. How would you write a regex that matches a number with commas for
+every three digits? It must match the following:
+'42'
+'1,234'
+'6,368,745'
+
+but not the following:
+'12,34,567' (which has only two digits between the commas)
+'1234' (which lacks commas)
+'''
+import re
+digitRegex = re.compile(r'^\d{1,3}(,\d{3})*$')
+mo = digitRegex.search('42')
+print(mo.group())
+mo = digitRegex.search('1,234')
+print(mo.group())
+mo = digitRegex.search('6,368,745')
+print(mo.group())
+mo = digitRegex.search('12,34,567')
+print(mo == None)
+mo = digitRegex.search('1234')
+print(mo == None)
+# %%
+'''
+21. How would you write a regex that matches the full name of 
+someone whose last name is Watanabe? You can assume that the 
+first name that comes before it will always be one word that 
+begins with a capital letter. The regex must match the following:
+'Haruto Watanabe'
+'Alice Watanabe'
+'RoboCop Watanabe'
+
+but not the following:
+'haruto Watanabe' (where the first name is not capitalized)
+'Mr. Watanabe' (where the preceding word has a nonletter character)
+'Watanabe' (which has no first name)
+'Haruto watanabe' (where Watanabe is not capitalized)
+'''
+import re
+# either * or +
+WatanbeRegex = re.compile(r'^[A-Z][A-Za-z]* Watanabe$')
+mo = WatanbeRegex.search('Haruto Watanabe')
+print(mo.group())
+mo = WatanbeRegex.search('Alice Watanabe')
+print(mo.group())
+mo = WatanbeRegex.search('RoboCop Watanabe')
+print(mo.group())
+mo = WatanbeRegex.search('haruto Watanabe')
+print(mo == None)
+mo = WatanbeRegex.search('Mr. Watanabe')
+print(mo == None)
+mo = WatanbeRegex.search('Watanabe')
+print(mo == None)
+mo = WatanbeRegex.search('Haruto watanabe')
+print(mo == None)
+
+# %%
+'''
+22. How would you write a regex that matches a sentence where 
+the first word is either Alice, Bob, or Carol; the second word 
+is either eats, pets, or throws; the third word is apples, cats, 
+or baseballs; and the sentence ends with a period? This regex 
+should be case-insensitive. It must match the following:
+
+'Alice eats apples.'
+'Bob pets cats.'
+'Carol throws baseballs.'
+'Alice throws Apples.'
+'BOB EATS CATS.'
+but not the following:
+
+'RoboCop eats apples.'
+'ALICE THROWS FOOTBALLS.'
+'Carol eats 7 cats.'
+'''
+sentenceRegex = re.compile(r'''
+    ^(Alice|Bob|Carol)\s
+    (eats|pets|throws)\s
+    (apples|cats|baseballs)\.$
+    ''', re.VERBOSE | re.IGNORECASE)
+mo = sentenceRegex.search('Alice eats apples.')
+print(mo.group())
+mo = sentenceRegex.search('Bob pets cats.')
+print(mo.group())
+mo = sentenceRegex.search('Carol throws baseballs.')
+print(mo.group())
+mo = sentenceRegex.search('Alice throws Apples.')
+print(mo.group())
+mo = sentenceRegex.search('BOB EATS CATS.')
+print(mo.group())
+mo = sentenceRegex.search('RoboCop eats apples.')
+print(mo == None)
+mo = sentenceRegex.search('ALICE THROWS FOOTBALLS.')
+print(mo == None)
+mo = sentenceRegex.search('Carol eats 7 cats.')
+print(mo == None)
+
+# PRACTICE PROJECTS
+# Date Detection
+# dateDetection.py
