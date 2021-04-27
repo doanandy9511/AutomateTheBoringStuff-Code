@@ -1,1 +1,1 @@
-@py.exe "C:\Users\Ando\Documents\GitHub\AutomateTheBoringStuff-Code\newpy.py"
+@py.exe "C:\Users\doanando\Documents\GitHub\AutomateTheBoringStuff-Code\newpy.py"
