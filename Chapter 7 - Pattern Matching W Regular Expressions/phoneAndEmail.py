@@ -4,9 +4,9 @@ def main():
     # phone regex
     phoneRegex = re.compile(r'''(
         (\d{3}|\(\d{3}\))? # area code
-        [ -.]?         # separator
+        [ -.]?             # separator
         (\d{3})            # first 3 digits
-        [ -.]?         # separator
+        [ -.]?             # separator
         (\d{4})            # last 4 digits
         (\s*(ext|x|ext.)\s*(\d{2,5}))? # optional extension
     )''', re.VERBOSE)
@@ -30,9 +30,9 @@ def main():
     
     matches = []
     for _,area,f3,l4,_,_,ext in phoneRegex.findall(text):
-        phoneNum = '-'.join([groups[1], groups[3], groups[5]])
-        if groups[7] != '':
-            phoneNum += f' x{groups[8]}'
+        phoneNum = '-'.join([area, f3, l4])
+        if ext != '':
+            phoneNum += f' x{ext}'
         matches.append(phoneNum)
         '''
         print('num found')
