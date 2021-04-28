@@ -19,14 +19,16 @@ def validateDate(day: int, month: int, year: int) -> bool:
         True if date is valid, otherwise False
     '''
     if month in [4,6,9,11]:
-        return days <= 30
+        return day <= 30
     elif month == 2:
         if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
             leapYear = True
-            print('leap year biss')
+            return day <= 29
         else:
             leapYear = False
-            print('not leap year')
+            return day <= 28
+    else:
+        return day <= 31
 
 def main():
     dateRegex = re.compile(r'''
@@ -36,7 +38,7 @@ def main():
         [-./]             # separator
         ([1-2]\d{3})      # YYYY year
     ''', re.VERBOSE)
-    validateDate(20,2,1800)
+    print(validateDate(29,2,2005))
 
 if __name__ == '__main__':
     main()
