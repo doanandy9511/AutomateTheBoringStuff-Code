@@ -212,7 +212,7 @@ phoneNumRegex.findall('Cell: 415-555-9999 Work: 212-555-0000')
 #       (Think of this as matching "word" characters.)
 # \W -> Any character that is NOT a letter, numeric digit, or the
 #       underscore character.
-# \s -> Any space, tab, or newline character. 
+# \s -> Any space, tab, or newline character. (whitespace characters)
 #       (Think of this as matching "space" characters.)
 # \S -> Any  character that is NOT a space, tab, or newline. 
 

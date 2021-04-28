@@ -5,7 +5,7 @@ def validateDate(day: int, month: int, year: int) -> bool:
     '''Returns a bool whether the date is valid.
 
     Parameters
-    ------------
+    ----------
     day: int
         The day value of the date
     month: int
@@ -14,9 +14,9 @@ def validateDate(day: int, month: int, year: int) -> bool:
         The year value of the date
 
     Returns
-    ---------
+    -------
     bool
-        True if date is valid, otherwise False
+        a bool that is True if date is valid, and False otherwise
     '''
     if month in [4,6,9,11]:
         return day <= 30
