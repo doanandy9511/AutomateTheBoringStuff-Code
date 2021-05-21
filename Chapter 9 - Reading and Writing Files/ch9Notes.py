@@ -89,4 +89,93 @@ Path(r'C:\Users\doanando\spam').mkdir()
 # it won't make several subdirectories at once like os.makedirs()
 
 # %% Handling Absolute and Relative Paths
+from pathlib import Path
+Path.cwd()
+# WindowsPath('c:/Users/Ando/Documents/GitHub/AutomateTheBoringStuff-Code/Chapter 9 - Reading and Writing Files')
+Path.cwd().is_absolute()
+# True
+Path('spam/bacon/eggs').is_absolute()
+# False
+
+# %%
+Path('my/relative/path')
+# WindowsPath('my/relative/path')
+Path.cwd() / Path('my/relative/path')
+# WindowsPath('c:/Users/Ando/Documents/GitHub/AutomateTheBoringStuff-Code/Chapter 9 - Reading and Writing Files/my/relative/path')
+Path.home() / Path('my/relative/path')
+# WindowsPath('C:/Users/Ando/my/relative/path')
+
+# %%
+os.path.abspath('.')
+# 'c:\\Users\\Ando\\Documents\\GitHub\\AutomateTheBoringStuff-Code\\Chapter 9 - Reading and Writing Files'
+os.path.abspath('.\\Scripts')
+# 'c:\\Users\\Ando\\Documents\\GitHub\\AutomateTheBoringStuff-Code\\Chapter 9 - Reading and Writing Files\\Scripts'
+os.path.isabs('.')
+# False
+os.path.isabs(os.path.abspath('.'))
+# True
+
+# %%
+os.path.relpath('C:\\Windows', 'C:\\')
+# 'Windows'
+os.path.relpath('C:\\Windows', 'C:\\spam\\eggs')
+# '..\\..\\Windows'
+
+# %% Getting the Parts of a File Path
+p = Path('C:/Users/Ando/spam.txt')
+p.anchor
+# 'C:\\'
+p.parent
+# WindowsPath('C:/Users/Ando')
+p.name
+# 'spam.txt'
+p.stem
+# 'spam'
+p.suffix
+# '.txt'
+p.drive # only Windows Path objects have this
+# 'C:'
+
+# %%
+from pathlib import Path
+Path.cwd()
+# WindowsPath('c:/Users/Ando/Documents/GitHub/AutomateTheBoringStuff-Code/Chapter 9 - Reading and Writing Files')
+Path.cwd().parents[0]
+# WindowsPath('c:/Users/Ando/Documents/GitHub/AutomateTheBoringStuff-Code')
+Path.cwd().parents[1]
+# WindowsPath('c:/Users/Ando/Documents/GitHub')
+Path.cwd().parents[2]
+# WindowsPath('c:/Users/Ando/Documents')
+Path.cwd().parents[3]
+# WindowsPath('c:/Users/Ando')
+Path.cwd().parents[4]
+# WindowsPath('c:/Users')
+Path.cwd().parents[5]
+# WindowsPath('c:/')
+
+# %%
+calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+os.path.basename(calcFilePath)
+# 'calc.exe'
+os.path.dirname(calcFilePath)
+# 'C:\\Windows\\System32'
+os.path.split(calcFilePath)
+# ('C:\\Windows\\System32', 'calc.exe')
+(os.path.dirname(calcFilePath), os.path.basename(calcFilePath))
+# ('C:\\Windows\\System32', 'calc.exe')
+calcFilePath.split(os.sep)
+# ['C:', 'Windows', 'System32', 'calc.exe']
+
+# %% Finding File Sizes and Folder Contents
+os.path.getsize('C:\\Windows\\System32\\calc.exe')
+# 27648
+os.listdir('C:\\Windows\\System32')
+# many files lmao
+totalSize = 0
+for file in os.listdir('C:\\Windows\\System32'):
+    totalSize += os.path.getsize(os.path.join('C:\\Windows\\System32', file))
+print(totalSize)
+# 2367391244
+
+# %% Modifying a List of Files Using Glob Patterns
 
