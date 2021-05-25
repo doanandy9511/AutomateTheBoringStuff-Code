@@ -178,4 +178,136 @@ print(totalSize)
 # 2367391244
 
 # %% Modifying a List of Files Using Glob Patterns
+from pathlib import Path
+p = Path('C:/Users/doanando/Desktop')
+p.glob('*')
+# <generator object Path.glob at 0x000001F559529350>
+list(p.glob('*'))
+'''
+[WindowsPath('C:/Users/doanando/Desktop/Among Us.url'),
+ WindowsPath('C:/Users/doanando/Desktop/Ando Documents'),
+ --snip--
+ WindowsPath('C:/Users/doanando/Desktop/Zoom.lnk'),
+ WindowsPath('C:/Users/doanando/Desktop/µTorrent.lnk')]
+'''
+# The asterisk (*) stands for "multiple of any characters"
+list(p.glob('*.txt')) # List all text files
+# [WindowsPath('C:/Users/doanando/Desktop/atbsch9.txt')]
+list(p.glob('project?.docx'))
+'''
+[WindowsPath('C:/Users/doanando/Desktop/project1.docx'),
+ WindowsPath('C:/Users/doanando/Desktop/project2.docx')]
+'''
+list(p.glob('*.?x?'))
+'''
+[WindowsPath('C:/Users/doanando/Desktop/atbsch9.txt'),
+ WindowsPath('C:/Users/doanando/Desktop/OOSU10.exe')]
+'''
+# %% If you want to perform some operation on every file
+# in a directory, you can use either os.listdir(p) or p.glob('*')
+p = Path('C:/Users/doanando/Desktop')
+for textFilePathObj in p.glob('*.txt'):
+    print(textFilePathObj) # Prints the Path object as a string
+    # Do somesing w/ the text file
+'''
+C:\Users\doanando\Desktop\atbsch9 - Copy (2).txt
+C:\Users\doanando\Desktop\atbsch9 - Copy (3).txt
+C:\Users\doanando\Desktop\atbsch9 - Copy.txt
+C:\Users\doanando\Desktop\atbsch9.txt
+'''
+
+# %% Checking Path Validity
+# p.exists()  - True if path exists
+# p.is_file() - True if path exists and is a file
+# p.is_dir()  - True if path exists and is a directory
+winDir = Path('C:/Windows')
+notExistsDir = Path('C:/This/Folder/Does/Not/Exist')
+calcFile = Path('C:/Windows/System32/calc.exe')
+winDir.exists() # True
+winDir.is_dir() # True
+notExistsDir.exists() # False
+calcFile.is_file() # True
+calcFile.is_dir() # False
+# %% You can determine whether a flash drive is currently attached
+# to the computer by checking for it with the exists() method
+dDrive = Path('D:/')
+dDrive.exists() # False
+
+# %% The File Reading/Wrting Process
+from pathlib import Path
+p = Path('spam.txt')
+p.write_text('Hello, world!')
+# 13 ( 13 characters were written to the file)
+p.read_text()
+# 'Hello, world!'
+
+# %% 3 Steps to reading and writing files in Python
+# 1. Call the open() fn to return a File object
+# 2. Call the read() or write() method on the File object
+# %% Opening Files with the open() fn
+from pathlib import Path
+helloFile = open(Path.home() / 'hello.txt')
+helloFile = open('C:\\Users\\doanando\\hello.txt') # same as above
+# %% Reading the Content of Files
+helloContent = helloFile.read()
+helloContent
+# 'Hello, world!!!'
+sonnetFile = open(Path.home() / 'sonnet29.txt')
+sonnetFile.readlines()
+'''
+["When, in disgrace with fortune and men's eyes,\n",
+ 'I all alone beweep my outcast state,\n',
+ 'And trouble deaf heaven with my bootless cries,\n',
+ 'And look upon myself and curse my fate,']
+'''
+# note: except the last line of the file,
+# each string ends w/ '\n'
+
+# %% Writing to Files
+# 'w' write plaintext mode, 'a' append plaintext mode
+# if the filename passed to open() does not exist,
+#  both write and append mode will create a new, blank file
+# after reading or writing to a file, call the close() method
+#  before opening the file again (or use 'with open(p) as fileX:')
+from pathlib import Path
+baconFile = open('bacon.txt', 'w')
+baconFile.write('Hello, world!\n')
+baconFile.close()
+
+with open(Path('bacon.txt'), 'a') as baconFile:
+    baconFile.write('Bacon is not a vegetable.')
+with open('bacon.txt') as baconFile:
+    content = baconFile.read()
+print(content)
+'''
+Hello, world!
+Bacon is not a vegetable.
+'''
+# %% Saving Variables w/ the shelve Module
+import shelve
+'''
+shelfFile = shelve.open('mydata')
+cats = ['Zophie', 'Pooka', 'Simon']
+shelfFile['cats'] = cats
+shelfFile.close()
+'''
+with shelve.open('mydata') as shelfFile:
+    cats = ['Zophie', 'Pooka', 'Simon']
+    shelfFile['cats'] = cats
+# %% shelf files can read and write once opened
+import shelve
+with shelve.open('mydata') as shelfFile:
+    print(type(shelfFile))
+    # <class 'shelve.DbfilenameShelf'>
+    print(shelfFile['cats'])
+    # ['Zophie', 'Pooka', 'Simon']
+# %% since these methods return list-like values instead of true lists,
+# you should pass them to the list() fn to get them in list form
+with shelve.open('mydata') as shelfFile:
+    print(list(shelfFile.keys()))
+    # ['cats']
+    print(list(shelfFile.values()))
+    # [['Zophie', 'Pooka', 'Simon']]
+
+# %% Saving variabes w the pprint.pformat() fn
 
