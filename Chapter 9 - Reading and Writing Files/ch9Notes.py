@@ -309,5 +309,6 @@ with shelve.open('mydata') as shelfFile:
     print(list(shelfFile.values()))
     # [['Zophie', 'Pooka', 'Simon']]
 
-# %% Saving variabes w the pprint.pformat() fn
-
+# %% Saving variables w the pprint.pformat() fn
+import pprint
+cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
