@@ -312,3 +312,18 @@ with shelve.open('mydata') as shelfFile:
 # %% Saving variables w the pprint.pformat() fn
 import pprint
 cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+pprint.pformat(cats)
+# "[{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+with open('myCats.py', 'w') as fileObj:
+    fileObj.write(f'cats = {pprint.pformat(cats)}\n')
+    # 83
+# %%
+import myCats
+myCats.cats
+# [{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]
+myCats.cats[0]
+# {'desc': 'chubby', 'name': 'Zophie'}
+myCats.cats[0]['name']
+# 'Zophie'
+
+# %%
