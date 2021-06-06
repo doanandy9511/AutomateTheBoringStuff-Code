@@ -1,0 +1,1 @@
+@pyw.exe "C:\Users\doanando\Documents\GitHub\AutomateTheBoringStuff-Code\mcb.pyw"
