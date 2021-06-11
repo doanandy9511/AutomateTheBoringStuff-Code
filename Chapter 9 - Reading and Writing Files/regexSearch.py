@@ -6,7 +6,7 @@ def main():
         directory = Path(sys.argv[1])
         if directory.is_dir():
             print('woohoo')
-            print(directory.name)
+            print(list(directory.glob('*.txt')))
         regex = sys.argv[2]
     else:
         print('BOOO, not enough parameters.')
