@@ -110,36 +110,5 @@ exampleZip = zipfile.ZipFile(p / 'example.zip')
 exampleZip.namelist()
 # ['cats/catnames.txt', 'cats/zophie.jpg', 'spam.txt']
 spamInfo = exampleZip.getinfo('spam.txt')
-# ZipInfo object ^^
 spamInfo.file_size
-# 4171
-spamInfo.compress_size
-# 1483
-f'Compressed file is {round(spamInfo.file_size / spamInfo.compress_size, 2)}x smaller!'
-# 'Compressed file is 2.81x smaller!'
-exampleZip.close()
-
-# %% Extracting from zip files
-import zipfile, os
-from pathlib import Path
-p = Path.home()
-with zipfile.ZipFile(p / 'example.zip') as exampleZip:
-    exampleZip.extractall()
-    # extracted to cwd
-    exampleZip.extractall('C:\\delicious')
-    # extracted to C:\delicious
-    exampleZip.extract('spam.txt')
-    # extract spam.txt to cwd
-    exampleZip.extract('spam.txt', 'C:\\some\\new\\folders')
-    # 'C:\\some\\new\\folders\\spam.txt'
-    # Python will create this folder if it doesn't exist ^^
-
-# %% Creating and adding to zip files
-import zipfile
-with zipfile.ZipFile('new.zip', 'w') as newZip:
-    newZip.write('spam.txt', compress_type=zipfile.ZIP_DEFLATED)
-# keep in mind that just as with writing to files, write mode will erase
-#  all existing contents of a zip file
-
-
 # %%
