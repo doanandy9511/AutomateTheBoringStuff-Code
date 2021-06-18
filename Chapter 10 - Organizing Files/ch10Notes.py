@@ -140,6 +140,7 @@ with zipfile.ZipFile('new.zip', 'w') as newZip:
     newZip.write('spam.txt', compress_type=zipfile.ZIP_DEFLATED)
 # keep in mind that just as with writing to files, write mode will erase
 #  all existing contents of a zip file
-
+# if you want to simply add files to an existing zip file, pass 'a' as
+#  the second argument to zipfile.Zipfile() to open in append mode
 
 # %%
