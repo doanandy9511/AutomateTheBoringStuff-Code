@@ -1,7 +1,8 @@
 # Chapter 11 - Debugging
 
 # %% Raising exceptions
-raise Exception('This is the error message')
+if True == True:
+    raise Exception('This is the error message')
 # boxPrint.py
 
 # Getting the traceback as a string
@@ -39,9 +40,41 @@ def switchLights(stoplight):
     assert 'red' in stoplight.values(), f'Neither light is red! {stoplight}'
 switchLights(market_2nd)
 # AssertionError: Neither light is red! {'ns': 'yellow', 'ew': 'green'}
-
+switchLights(mission_16th)
+# AssertionError: Neither light is red! {'ns': 'green', 'ew': 'yellow'}
 # %% Logging
-# Using the logging module
+# factorialLog.py
 import logging
-logging.basic
+logging.basicConfig(level=logging.DEBUG, 
+   format='%(asctime)s - %(levelname)s - %(message)s')
+logging.debug('Some debugging details.')
+logging.info('The logging module is working.')
+logging.warning('An error message is about to be logged.')
+logging.error('An error has occurred.')
+logging.critical('The program is unable to recover!')    
+'''
+2021-07-21 18:36:14,850 - DEBUG - Some debugging details.
+2021-07-21 18:36:14,852 - INFO - The logging module is working.
+2021-07-21 18:36:14,852 - WARNING - An error message is about to be logged.
+2021-07-21 18:36:14,853 - ERROR - An error has occurred.
+2021-07-21 18:36:14,854 - CRITICAL - The program is unable to recover!
+'''
+# up to you to change the priority you want to see, change level in basicConfig
+# ex. logging.ERROR will show only ERROR and CRITICAL messages 
+#  and skip the DEBUG, INFO, and WARNING messages
+# %% Disabling Logging
+import logging
+logging.basicConfig(level=logging.INFO, 
+    format='%(asctime)s - %(levelname)s -  %(message)s')
+logging.critical('Critical error! Critical error! 1')
+logging.disable(logging.CRITICAL)
+logging.critical('Critical error! Critical error! 2')
+logging.error('Error! Error!')
+# 2021-07-21 18:56:04,816 - CRITICAL -  Critical error! Critical error! 1
+
+# %% Logging to a file
+import logging
+logging.basicConfig(filename='myProgramLog.txt', level=logging.DEBUG, 
+    format='%(asctime)s -  %(levelname)s -  %(message)s')
+logging.debug('Testing logging to a file 123...')
 # %%
