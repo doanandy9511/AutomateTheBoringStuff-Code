@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "c:\Users\doanando\Documents\GitHub\AutomateTheBoringStuff-Code\Chapter 11 - Debugging\errorExample.py", line 12, in main
+    spam()
+  File "c:\Users\doanando\Documents\GitHub\AutomateTheBoringStuff-Code\Chapter 11 - Debugging\errorExample.py", line 5, in spam
+    bacon()
+  File "c:\Users\doanando\Documents\GitHub\AutomateTheBoringStuff-Code\Chapter 11 - Debugging\errorExample.py", line 8, in bacon
+    raise Exception('This is the error message.')
+Exception: This is the error message.
