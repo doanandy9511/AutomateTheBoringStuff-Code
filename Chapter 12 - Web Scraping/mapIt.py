@@ -11,5 +11,6 @@ def main():
         addr = pyperclip.paste()
     
     webbrowser.open(f'https://www.google.com/maps/place/{addr}')
+
 if __name__ == '__main__':
     main()
