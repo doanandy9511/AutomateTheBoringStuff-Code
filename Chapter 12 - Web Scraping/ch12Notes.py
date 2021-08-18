@@ -72,5 +72,32 @@ To review, here’s the complete process for downloading and saving a file:
 '''
 https://developer.mozilla.org/en-US/learn/html/
 https://htmldog.com/guides/html/beginner/
+> myFirstPage.html
 https://www.codecademy.com/learn/learn-html
 '''
+
+# %% Using the Developer Tools to Find HTML Elements
+# right click on the desired element to inspect, then
+# right click and select "copy element" 
+# ex. https://forecast.weather.gov/MapClick.php?lat=33.37445500000007&lon=-112.16403999999994#.YQcxTI5KhPY
+# <p class="myforecast-current-lrg">102°F</p>
+
+# %% Parsing HTML w the bs4 module
+# Beautiful Soup, version 4
+# python -m pip install beautifulsoup4
+
+# %% Creating a BeautifulSoup Object from HTML
+# the bs4.BeautifulSoup() fn needs to be called w a string
+# containing the HTML it will parse
+import requests, bs4
+res = requests.get('https://nostarch.com')
+res.raise_for_status()
+noStarchSoup = bs4.BeautifulSoup(res.text, 'html.parser')
+type(noStarchSoup)
+# bs4.BeautifulSoup
+
+exampleFile = open('example.html')
+exampleSoup = bs4.BeautifulSoup(exampleFile, 'html.parser')
+type(exampleSoup)
+# bs4.BeautifulSoup
+# %%
